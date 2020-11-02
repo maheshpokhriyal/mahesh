@@ -1,0 +1,74 @@
+#!/usr/bin/python
+import os
+import os.path
+import pandas as pd 
+import numpy as np
+import glob
+from pyexcelerate import Workbook
+import openpyxl
+from openpyxl import Workbook
+path = "/root/PYTHON-CSV/PY/CSV_OUTPUT_NEW/"
+#path = glob.glob(os.path.join(all_files))
+print("Generating Output In  Excel")
+# Reading the csv file
+df_Server = pd.read_csv(os.path.join(path, 'Server_Info.csv'))
+df_PACKAGES = pd.read_csv(os.path.join(path, 'Installed_PACKAGES.csv'))
+df_Services = pd.read_csv(os.path.join(path, 'Running_SERVICES.csv'))
+df_PATCH = pd.read_csv(os.path.join(path, 'PATCH.csv'))
+df_User_Account = pd.read_csv(os.path.join(path, 'Local_User_Account.csv'))
+df_Process = pd.read_csv(os.path.join(path, 'Running_PROCESS.csv'))
+df_CPU = pd.read_csv(os.path.join(path, 'CPU_INFO.csv'))
+df_DISK = pd.read_csv(os.path.join(path, 'DISK_INFO.csv'))
+df_Physical_Memory = pd.read_csv(os.path.join(path, 'Physical_Memory_INFO.csv'))
+df_SWAP_Memory = pd.read_csv(os.path.join(path, 'SWAP_Memory_INFO.csv'))
+df_Network = pd.read_csv(os.path.join(path, 'NETWORK.csv'))
+df_Network_Route = pd.read_csv(os.path.join(path, 'NETWORK_Route.csv'))
+df_Services_Ports = pd.read_csv(os.path.join(path, 'Services_Ports.csv'))
+df_Login = pd.read_csv(os.path.join(path, 'Current_User_Login.csv'))
+df_SELinux = pd.read_csv(os.path.join(path, 'SELINUX.csv'))
+df_Firewall = pd.read_csv(os.path.join(path, 'FIREWALL.csv'))
+df_Runlevel = pd.read_csv(os.path.join(path, 'RUNLEVEL.csv'))
+df_NTP = pd.read_csv(os.path.join(path, 'NTP.csv'))
+df_TZ = pd.read_csv(os.path.join(path, 'TimeZone.csv'))
+df_Cluster = pd.read_csv(os.path.join(path, 'SuSE_Cluster.csv'))
+df_LOG = pd.read_csv(os.path.join(path, 'System_Log.csv'))
+df_NAGIOS = pd.read_csv(os.path.join(path, 'NAGIOS.csv'))
+df_BladeLogic = pd.read_csv(os.path.join(path, 'Bladelogic.csv'))
+df_EMC = pd.read_csv(os.path.join(path, 'Backup_Tool_EMC.csv'))
+df_REAR = pd.read_csv(os.path.join(path, 'System_Recovery_Tool.csv'))
+df_HEALTH = pd.read_csv(os.path.join(path, 'HEALTH.csv'))
+df_TSS = pd.read_csv(os.path.join(path, 'Atos_TSS.csv'))
+df_RA = pd.read_csv(os.path.join(path, 'Risk_Analysis.csv'))
+
+# saving xlsx file
+server = pd.ExcelWriter('/root/PYTHON-CSV/PY/EXCEL/SuSE_LLD.xlsx')
+df_Server.to_excel(server, index = False, sheet_name='Server_Info')
+df_PACKAGES.to_excel(server, index = False, sheet_name='Installed_PACKAGES')
+df_Services.to_excel(server, index = False, sheet_name='Running_Services')
+df_PATCH.to_excel(server, index = False, sheet_name='PATCH')
+df_User_Account.to_excel(server, index = False, sheet_name='Local_User_Account')
+df_Process.to_excel(server, index = False, sheet_name='Running_PROCESS')
+df_CPU.to_excel(server, index = False, sheet_name='CPU_INFO')
+df_DISK.to_excel(server, index = False, sheet_name='DISK_INFO')
+df_Physical_Memory.to_excel(server, index = False, sheet_name='Physical_Memory_INFO')
+df_SWAP_Memory.to_excel(server, index = False, sheet_name='SWAP_Memory_INFO')
+df_Network.to_excel(server, index = False, sheet_name='NETWORK')
+df_Network_Route.to_excel(server, index = False, sheet_name='NETWORK_Route')
+df_Services_Ports.to_excel(server, index = False, sheet_name='Services_Ports')
+df_Login.to_excel(server, index = False, sheet_name='Current_User_Login')
+df_SELinux.to_excel(server, index = False, sheet_name='SELINUX')
+df_Firewall.to_excel(server, index = False, sheet_name='FIREWALL')
+df_Runlevel.to_excel(server, index = False, sheet_name='RUNLEVEL')
+df_NTP.to_excel(server, index = False, sheet_name='NTP')
+df_TZ.to_excel(server, index = False, sheet_name='TimeZone')
+df_Cluster.to_excel(server, index = False, sheet_name='SuSE_Cluster')
+df_LOG.to_excel(server, index = False, sheet_name='System_Log')
+df_NAGIOS.to_excel(server, index = False, sheet_name='NAGIOS')
+df_BladeLogic.to_excel(server, index = False, sheet_name='Bladelogic')
+df_EMC.to_excel(server, index = False, sheet_name='Backup_Tool_EMC')
+df_REAR.to_excel(server, index = False, sheet_name='System_Recovery_Tool')
+df_HEALTH.to_excel(server, index = False, sheet_name='HEALTH')
+df_TSS.to_excel(server, index = False, sheet_name='Atos_TSS')
+df_RA.to_excel(server, index = False, sheet_name='Risk_Analysis')
+
+server.save()
